@@ -27,6 +27,16 @@ describe('gray-matter', function() {
     });
   });
 
+  it('should throw the error each parsing content', function() {
+    var fixture = '---whatever\nABC: XYZ\n---';
+    assert.throws(function() {
+      matter(fixture);
+    });
+    assert.throws(function() {
+      matter(fixture);
+    });
+  });
+
   it('boolean yaml types should still return the empty object', function() {
     var actual = matter('--- true\n---');
     assert.deepEqual(actual.data, {});

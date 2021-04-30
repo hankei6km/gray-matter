@@ -41,10 +41,14 @@ function matter(input, options) {
       return file;
     }
 
+    const ret = parseMatter(file, options);
+
     // only cache if there are no options passed. if we cache when options
     // are passed, we would need to also cache options values, which would
     // negate any performance benefits of caching
     matter.cache[file.content] = file;
+
+    return ret;
   }
 
   return parseMatter(file, options);
